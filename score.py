@@ -2,10 +2,6 @@ from classes import *
 
 load_setting()
 
-{"1":"chinese", \
- "2":"english", \
- "3":"math"} 
-
 def score(num):
     if num == "1":
         sub = "chinese"
@@ -17,16 +13,17 @@ def score(num):
         sub = "math"
         chi = "數學"
         
-    for key,value in jdata["student"].keys(),jdata["student"].values():
+    for num in jdata["student"].keys():
         while True:
-            score = input("{},{}的{}成績:".format(key,value,chi))
+            score = input("{},{}的{}成績:".format(num,jdata["student"][num],chi))
             try:
                 int(score)
-                jdata["score"][sub][key] = score
+                jdata["score"][sub][num] = score
                 dump_setting()
                 break
             except:
                 error()
     print(jdata["score"][sub])
+    input("按Enter回主選單")
     
-score("1")
+score("3")
